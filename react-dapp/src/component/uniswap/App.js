@@ -15,7 +15,7 @@ import Proposal from './Proposal';
 function UniswapApp() {
   const allProposalsQuery = gql`
     query getAllProposals {
-      proposals(first: 5) {
+      proposals(where: {status: ACTIVE}) {
         id
         status
         endBlock
