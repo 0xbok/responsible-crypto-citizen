@@ -2,7 +2,13 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
-
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";  
+import Proposal from './Proposal';
 
 function CompoundApp() {
   const allProposalsQuery = gql`
@@ -22,17 +28,24 @@ function Proposals() {
   return <ul> {
     data.proposals.map(
       function(element, index){ 
-        return <li key={element.id}> {element.id}, {element.status}, {element.description.substring(1,20)}... </li>; 
+        return <li key={element.id}> <Link to={'/compound/'+element.id} target="_blank"> {element.id}, {element.status}, {element.description.substring(1,20)}... </Link> </li>; 
       })} 
     </ul>;
 }
 
-  return (
-    <div>
-      <h2>Compound Governance Proposals</h2>
-      <Proposals />
-    </div>
-  );
+return (
+  <BrowserRouter>
+  <Switch>  
+    <Route exact path="/">
+  <div>
+    <h2>Compound Governance Proposals</h2>
+    <Proposals />
+  </div>
+  </Route>
+      <Route path="/compound/:id" component={Proposal} />
+    </Switch>
+    </BrowserRouter>
+);
 }
 
 export default CompoundApp;
