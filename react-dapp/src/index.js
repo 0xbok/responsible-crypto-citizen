@@ -8,15 +8,21 @@ import {
 import './index.css';
 import AaveApp from './component/aave/App';
 import CompoundApp from './component/compound/App';
+import UniswapApp from './component/uniswap/App';
 
 
 const aaveClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2',
+  uri: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2-kovan',
   cache: new InMemoryCache()
 });
 
 const compoundClient = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/protofire/compound-governance',
+  cache: new InMemoryCache()
+});
+
+const uniswapClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/messari/uniswap-governance',
   cache: new InMemoryCache()
 });
 
@@ -32,4 +38,11 @@ ReactDOM.render(
     <CompoundApp />
   </ApolloProvider>,
   document.getElementById('CompoundList')
+);
+
+ReactDOM.render(
+  <ApolloProvider client={uniswapClient}>
+    <UniswapApp />
+  </ApolloProvider>,
+  document.getElementById('UniswapList')
 );

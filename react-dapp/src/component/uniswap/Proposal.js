@@ -12,6 +12,7 @@ function Proposal(nest) {
       proposal(id: $id) {
         id
         status
+        endBlock
         description
       }
     }`;
@@ -32,15 +33,16 @@ function Proposal(nest) {
     console.log(data);
     
     return <div>
-    <b>ID: {data.proposal.id}, State: {data.proposal.status}</b><br/>
-    <ReactMarkdown children={data.proposal.description} /><br/>
-    </div>
+      <b>ID: {data.proposal.id}, State: {data.proposal.state}</b><br/>
+      <b>{data.proposal.endBlock}</b><br/>
+      <ReactMarkdown children={data.proposal.description} /><br/>
+      </div>
   }
 
 
   return (
     <div>
-      <h2>Compound Governance Proposal {id} </h2>
+      <h2>Uniswap Governance Proposal {id} </h2>
       <GetProposal />
     </div>
   );
