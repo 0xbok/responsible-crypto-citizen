@@ -6,16 +6,30 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 import './index.css';
-import App from './App';
+import AaveApp from './component/aave/App';
+import CompoundApp from './component/compound/App';
+
 
 const aaveClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2-kovan',
+  uri: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2',
+  cache: new InMemoryCache()
+});
+
+const compoundClient = new ApolloClient({
+  uri: 'https://api.thegraph.com/subgraphs/name/protofire/compound-governance',
   cache: new InMemoryCache()
 });
 
 ReactDOM.render(
   <ApolloProvider client={aaveClient}>
-    <App />
+    <AaveApp />
   </ApolloProvider>,
-  document.getElementById('root')
+  document.getElementById('AaveList')
+);
+
+ReactDOM.render(
+  <ApolloProvider client={compoundClient}>
+    <CompoundApp />
+  </ApolloProvider>,
+  document.getElementById('CompoundList')
 );
