@@ -4,18 +4,18 @@ import {
   gql
 } from "@apollo/client";
 import {
-  BrowserRouter,
+  HashRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";  
+} from "react-router-dom";
 import Proposal from './Proposal';
 
 
 function AaveApp() {
   const allProposalsQuery = gql`
     query getAllProposals {
-      proposals(first: 5) {
+      proposals(first: 10) {
         id
         state
         title
@@ -30,20 +30,20 @@ function AaveApp() {
       console.log(error);
       return <p>Error :(</p>;
     }
-    
+
     return <ul> {
       data.proposals.map(
-        function(element, index){ 
-          return <li key={element.id}> <Link to={'/aave/'+element.id} target="_blank"> {element.id}, {element.state}, {element.title}, {element.shortDescription} </Link> </li>; 
-        })} 
+        function(element, index){
+          return <li key={element.id}> <Link to={'/aave/'+element.id} target="_blank"> {element.id}, {element.state}, {element.title}, {element.shortDescription} </Link> </li>;
+        })}
       </ul>
-      
-    
+
+
   }
 
   return (
-    <BrowserRouter>
-      <Switch>  
+    <Router>
+      <Switch>
         <Route exact path="/">
           <div>
             <h2>Aave Governance Proposals</h2>
@@ -52,7 +52,7 @@ function AaveApp() {
         </Route>
           <Route path="/aave/:id" component={Proposal} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 

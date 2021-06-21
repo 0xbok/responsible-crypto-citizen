@@ -4,18 +4,18 @@ import {
   gql
 } from "@apollo/client";
 import {
-  BrowserRouter,
+  HashRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";  
+} from "react-router-dom";
 import Proposal from './Proposal';
 
 
 function UniswapApp() {
   const allProposalsQuery = gql`
     query getAllProposals {
-      proposals(where: {status: ACTIVE}) {
+      proposals(first: 20) {
         id
         status
         endBlock
@@ -30,20 +30,20 @@ function UniswapApp() {
       console.log(error);
       return <p>Error :(</p>;
     }
-    
+
     return <ul> {
       data.proposals.map(
-        function(element, index){ 
-          return <li key={element.id}> <Link to={'/uniswap/'+element.id} target="_blank"> {element.id}, {element.status}, {element.endBlock}, {element.description.substring(1,20)}... </Link> </li>; 
-        })} 
+        function(element, index){
+          return <li key={element.id}> <Link to={'/uniswap/'+element.id} target="_blank"> {element.id}, {element.status}, {element.endBlock}, {element.description.substring(1,20)}... </Link> </li>;
+        })}
       </ul>
-      
-    
+
+
   }
 
   return (
-    <BrowserRouter>
-      <Switch>  
+    <Router>
+      <Switch>
         <Route exact path="/">
           <div>
             <h2>Uniswap Governance Proposals</h2>
@@ -52,7 +52,7 @@ function UniswapApp() {
         </Route>
           <Route path="/uniswap/:id" component={Proposal} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -9,10 +9,10 @@ import './index.css';
 import AaveApp from './component/aave/App';
 import CompoundApp from './component/compound/App';
 import UniswapApp from './component/uniswap/App';
-
+import ConnectWalletApp from './component/wallet/App';
 
 const aaveClient = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2-kovan',
+  uri: 'https://api.thegraph.com/subgraphs/name/aave/governance-v2',
   cache: new InMemoryCache()
 });
 
@@ -25,6 +25,13 @@ const uniswapClient = new ApolloClient({
   uri: 'https://api.thegraph.com/subgraphs/name/messari/uniswap-governance',
   cache: new InMemoryCache()
 });
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ConnectWalletApp />
+  </React.StrictMode>,
+  document.getElementById('wallet')
+);
 
 ReactDOM.render(
   <ApolloProvider client={aaveClient}>

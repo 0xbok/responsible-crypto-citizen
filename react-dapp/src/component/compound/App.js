@@ -3,11 +3,11 @@ import {
   gql
 } from "@apollo/client";
 import {
-  BrowserRouter,
+  HashRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";  
+} from "react-router-dom";
 import Proposal from './Proposal';
 
 function CompoundApp() {
@@ -16,26 +16,26 @@ function CompoundApp() {
       proposals(where: {status: ACTIVE}) {
         id
         status
-        description 
-      }   
+        description
+      }
     }`;
 
 function Proposals() {
   const { loading, error, data } = useQuery(allProposalsQuery);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  
+
   return <ul> {
     data.proposals.map(
-      function(element, index){ 
-        return <li key={element.id}> <Link to={'/compound/'+element.id} target="_blank"> {element.id}, {element.status}, {element.description.substring(1,20)}... </Link> </li>; 
-      })} 
+      function(element, index){
+        return <li key={element.id}> <Link to={'/compound/'+element.id} target="_blank"> {element.id}, {element.status}, {element.description.substring(1,20)}... </Link> </li>;
+      })}
     </ul>;
 }
 
 return (
-  <BrowserRouter>
-  <Switch>  
+  <Router>
+  <Switch>
     <Route exact path="/">
   <div>
     <h2>Compound Governance Proposals</h2>
@@ -44,7 +44,7 @@ return (
   </Route>
       <Route path="/compound/:id" component={Proposal} />
     </Switch>
-    </BrowserRouter>
+    </Router>
 );
 }
 
