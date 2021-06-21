@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/responsible-crypto-citizen/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/responsible-crypto-citizen/static/js/main.61f8b836.chunk.js",
-    "main.js.map": "/responsible-crypto-citizen/static/js/main.61f8b836.chunk.js.map",
+    "main.js": "/responsible-crypto-citizen/static/js/main.51450de8.chunk.js",
+    "main.js.map": "/responsible-crypto-citizen/static/js/main.51450de8.chunk.js.map",
     "runtime-main.js": "/responsible-crypto-citizen/static/js/runtime-main.f89db6b8.js",
     "runtime-main.js.map": "/responsible-crypto-citizen/static/js/runtime-main.f89db6b8.js.map",
-    "static/js/2.aad50e1b.chunk.js": "/responsible-crypto-citizen/static/js/2.aad50e1b.chunk.js",
-    "static/js/2.aad50e1b.chunk.js.map": "/responsible-crypto-citizen/static/js/2.aad50e1b.chunk.js.map",
+    "static/js/2.42d16efa.chunk.js": "/responsible-crypto-citizen/static/js/2.42d16efa.chunk.js",
+    "static/js/2.42d16efa.chunk.js.map": "/responsible-crypto-citizen/static/js/2.42d16efa.chunk.js.map",
     "index.html": "/responsible-crypto-citizen/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/responsible-crypto-citizen/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.aad50e1b.chunk.js.LICENSE.txt": "/responsible-crypto-citizen/static/js/2.aad50e1b.chunk.js.LICENSE.txt"
+    "static/js/2.42d16efa.chunk.js.LICENSE.txt": "/responsible-crypto-citizen/static/js/2.42d16efa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f89db6b8.js",
-    "static/js/2.aad50e1b.chunk.js",
+    "static/js/2.42d16efa.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.61f8b836.chunk.js"
+    "static/js/main.51450de8.chunk.js"
   ]
 }
